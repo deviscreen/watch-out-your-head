@@ -1,0 +1,3 @@
+rootProject.name = 'watchout'
+
+include 'watchout-api'
