@@ -7,7 +7,9 @@ API server : watchout-api ( Spring Boot - gradle )
 
 WEB server : watchout-web ( React - npm )
 
-web server start  
+1. npm  설치하기 !!
+
+2. web server start  
 `cd ./watchout-web`<br/>
 
 `npm install` 을 해준 뒤 <br/> 
