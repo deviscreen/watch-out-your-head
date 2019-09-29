@@ -14,6 +14,10 @@ WEB server : watchout-web ( React - npm )
 
 `npm install` 을 해준 뒤 <br/> 
 `npm start` 입력 <br/>
+
+참고사항
+`npm install ` 시 멈춰있을경우 <br/>
+`npm install -g npm@latest` npm을 이전 버전으로 설치하고 다시 npm install 한다<br/>
 동작 확인 : http://localhost:3000
 
 ###TODO
