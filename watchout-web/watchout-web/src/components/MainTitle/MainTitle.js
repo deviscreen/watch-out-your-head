@@ -5,7 +5,7 @@ class MainTitle extends Component{
     render(){
 
         return (
-            <div>
+            <div className="main-title">
                 Main Title
             </div>
         )

@@ -1,11 +1,11 @@
 import React , {Component} from 'react';
-
+import './Content.css'
 class Content extends Component{
     render(){
 
         return (
-            <div>
-                <div>
+            <div className="content-wrap">
+                <div className="content-header">
                     <div>Title</div>
                     <div>Date</div>
                     <div>Ask User</div>

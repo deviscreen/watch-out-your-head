@@ -27,7 +27,7 @@ function App() {
         <SearchBar/>
         <MainCategory/>
       </div>
-      <div>
+      <div className="body-wrap">
         <ContentList/>
         <SideBar/>
       </div>
