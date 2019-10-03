@@ -6,7 +6,7 @@ class MainTitle extends Component{
 
         return (
             <div className="main-title">
-                Main Title
+                프로젝트 제목 짓기!
             </div>
         )
     }
