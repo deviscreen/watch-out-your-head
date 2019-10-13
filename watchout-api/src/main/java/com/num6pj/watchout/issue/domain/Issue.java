@@ -14,12 +14,14 @@ public class Issue {
 
     @Id @GeneratedValue
     private long issueId;
-    long writerUserId;
+    private long writerUserId;
     private String Category;
-    private Timestamp createdat;
+    private Timestamp createdDate;
+    private Timestamp modifiedDate;
+    private Timestamp closeDate;
     private String title;
     private String context;
     private long price;
     private String issueState;
-
+    //TODO issueState, Category부분 코드값으로 수정 < Category는 따로 aggregation을 분리하는것도 고려 해봐야함 > 
 }
