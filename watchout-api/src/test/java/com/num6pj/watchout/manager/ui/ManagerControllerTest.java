@@ -33,16 +33,15 @@ public class ManagerControllerTest {
     @Autowired
     private ResourceRepository resourceRepository;
 
-    @Ignore
     @Test
     public void createResource() throws Exception {
         ResourceRequest resource = ResourceRequest.builder().name("test")
                                                   .path("/").desc("test").build();
         mvc.perform(MockMvcRequestBuilders.post("/resource/create")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(objectMapper.writeValueAsString(resource)))
-            .andDo(print())
-            .andExpect(status().is2xxSuccessful());
+                                          .contentType(MediaType.APPLICATION_JSON)
+                                          .content(objectMapper.writeValueAsString(resource)))
+           .andDo(print())
+           .andExpect(status().is2xxSuccessful());
     }
 
     @Test
@@ -65,10 +64,10 @@ public class ManagerControllerTest {
         CategoryRequest category = CategoryRequest.builder().categoryName("test")
                                                   .resourceName("test").build();
         mvc.perform(MockMvcRequestBuilders.post("/category/create")
-               .contentType(MediaType.APPLICATION_JSON)
-               .content(objectMapper.writeValueAsString(category)))
-               .andDo(print())
-               .andExpect(status().isBadRequest());
+                                          .contentType(MediaType.APPLICATION_JSON)
+                                          .content(objectMapper.writeValueAsString(category)))
+           .andDo(print())
+           .andExpect(status().isBadRequest());
     }
 
     @Test

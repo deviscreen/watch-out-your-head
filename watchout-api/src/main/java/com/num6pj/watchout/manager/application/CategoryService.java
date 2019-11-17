@@ -2,6 +2,7 @@ package com.num6pj.watchout.manager.application;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,6 @@ public class CategoryService {
     /**
      * 카테고리 생성
      * @param name 카테고리 명
-     * @throws Exception
      */
     public void createCategory(String name, Long resourceId) {
         categoryRepository.save(new Category(name, resourceId));
@@ -39,9 +39,17 @@ public class CategoryService {
      * 카테고리 변경
      * @param id 카테고리 ID
      * @param name 카테고리 명
-     * @throws Exception
      */
     public void changeCategory(Long id, String name) {
         categoryRepository.save(new Category(id, name));
+    }
+
+    /**
+     * 카테고리 조회
+     * @param name 카테고리 명
+     * @return 카테고리명
+     */
+    public Optional<Category> findCategory(String name) {
+        return categoryRepository.findByName(name);
     }
 }
