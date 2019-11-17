@@ -1,10 +1,10 @@
 package com.num6pj.watchout.manager.ui;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.num6pj.watchout.manager.application.ManagerService;
+import com.num6pj.watchout.manager.domain.Category;
 import com.num6pj.watchout.manager.ui.vo.CategoryRequest;
 import com.num6pj.watchout.manager.ui.vo.ResourceRequest;
+
+import org.modelmapper.ModelMapper;
 
 @RestController
 public class ManagerController {
@@ -47,7 +50,12 @@ public class ManagerController {
 
     @PostMapping("category/change")
     public void changeCategory(@RequestBody @Valid CategoryRequest categoryRequest) {
-        managerService.changeCategory(categoryRequest.getId(),
-                                      categoryRequest.getCategoryName());
+        Long categoryId = categoryRequest.getId();
+        if(categoryId == null) {
+            Category category =
+                    managerService.findCategoryByName(categoryRequest.getCategoryName())
+                                  .orElseThrow(() -> new IllegalArgumentException("category is not valid "));
+        }
+        managerService.changeCategory(categoryId, categoryRequest.getCategoryName());
     }
 }

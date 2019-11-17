@@ -1,6 +1,7 @@
 package com.num6pj.watchout.manager.application;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -39,5 +40,9 @@ public class ManagerService {
 
     public void changeCategory(Long id, String name) {
         categoryService.changeCategory(id, name);
+    }
+
+    public Optional<Category> findCategoryByName(String categoryName) {
+        return categoryService.findCategory(categoryName);
     }
 }
