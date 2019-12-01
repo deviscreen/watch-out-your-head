@@ -1,5 +1,6 @@
 package com.num6pj.watchout.issue.domain;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Table;
 import java.sql.Timestamp;
 @Data
 @Entity
+@Builder
 @Table(name="Issue")
 public class Issue {
 
