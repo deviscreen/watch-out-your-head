@@ -1,0 +1,61 @@
+package com.num6pj.watchout.manager.ui.vo;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import javax.validation.constraints.NotEmpty;
+
+import lombok.Builder;
+import lombok.ToString;
+
+@Builder
+@ToString
+public class CategoryRequest {
+    private Long id;
+    @NotEmpty
+    private String categoryName; //카테고리 명
+    @NotEmpty
+    private String resourceName; //리소스 명
+    private String createTime; //생성 시간
+    private String changeTime; //변경 시간
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getResourceName() {
+        return resourceName;
+    }
+
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+
+    public String getChangeTime() {
+        return changeTime;
+    }
+
+    public void setChangeTime(LocalDateTime changeTime) {
+        this.changeTime = changeTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+}

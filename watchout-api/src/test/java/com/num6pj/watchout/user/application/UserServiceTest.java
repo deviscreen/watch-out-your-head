@@ -1,15 +1,11 @@
 package com.num6pj.watchout.user.application;
 
-import com.num6pj.watchout.user.domain.User;
+import com.num6pj.watchout.user.domain.UserInfo;
 import com.num6pj.watchout.user.infra.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.stereotype.Repository;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 public class UserServiceTest {
@@ -18,8 +14,8 @@ public class UserServiceTest {
     UserRepository userRepository;
 
     @Test
-    public void createUser() {
-        User user = new User(1L,"morrisKim","kdy0573@daum.net");
+    public void create() {
+        UserInfo user = new UserInfo("morrisKim", "morrisKim", "kdy0573@daum.net", "passwd");
         userRepository.save(user);
     }
 
