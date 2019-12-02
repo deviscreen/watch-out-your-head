@@ -6,7 +6,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.graalvm.compiler.graph.Node.OptionalInput;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
