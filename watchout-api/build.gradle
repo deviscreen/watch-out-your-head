@@ -43,6 +43,7 @@ dependencies {
 	testRuntime 'org.junit.platform:junit-platform-launcher'
 	testRuntime 'org.junit.jupiter:junit-jupiter-engine'
 	testRuntime 'org.junit.vintage:junit-vintage-engine'
+	testCompile group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.1.0'
 
 	implementation 'org.springframework.hateoas:spring-hateoas'
 }
