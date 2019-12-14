@@ -1,5 +1,6 @@
 package com.num6pj.watchout.issue.domain;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Table;
 import java.sql.Timestamp;
 @Data
 @Entity
+@Builder
 @Table(name="Issue")
 public class Issue {
 
@@ -22,6 +24,6 @@ public class Issue {
     private String title;
     private String context;
     private long price;
-    private String issueState;
+    private boolean isCompleted;
     //TODO issueState, Category부분 코드값으로 수정 < Category는 따로 aggregation을 분리하는것도 고려 해봐야함 > 
 }
