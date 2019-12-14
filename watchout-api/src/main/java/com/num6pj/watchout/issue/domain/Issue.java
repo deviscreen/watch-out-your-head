@@ -24,6 +24,6 @@ public class Issue {
     private String title;
     private String context;
     private long price;
-    private String issueState;
+    private boolean isCompleted;
     //TODO issueState, Category부분 코드값으로 수정 < Category는 따로 aggregation을 분리하는것도 고려 해봐야함 > 
 }
