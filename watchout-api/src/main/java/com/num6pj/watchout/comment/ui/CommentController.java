@@ -3,6 +3,8 @@ package com.num6pj.watchout.comment.ui;
 import com.num6pj.watchout.comment.application.CommentService;
 import com.num6pj.watchout.comment.domain.Comment;
 import com.num6pj.watchout.comment.dto.CreateCommentDto;
+import com.num6pj.watchout.issue.application.IssueService;
+import com.num6pj.watchout.issue.domain.Issue;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,10 +20,12 @@ public class CommentController {
 
     Logger logger = LoggerFactory.getLogger(CommentController.class);
     CommentService commentService;
+    IssueService issueService;
 
     public CommentController( CommentService commentService){
         this.commentService = commentService;
     }
+
     //Issue를 받아오면 create
     @PostMapping("/comment/create")
     public ResponseEntity<?> createComment(@RequestBody CreateCommentDto commentDto) throws URISyntaxException {
@@ -34,8 +38,8 @@ public class CommentController {
     @PatchMapping("/comment/adopt/{id}")
     public ResponseEntity<?> adoptComment(@PathVariable Long id, @RequestBody boolean status) throws URISyntaxException {
         URI location = new URI("/comment/adopt/"+id);
-
-
+//        Issue issue = issueService.getIssueById(id).orElseGet(null);
+        commentService.updateCommentState(id);
         return ResponseEntity.created(location).body("Adopt Answer");
     }
 
