@@ -31,14 +31,13 @@ public class CommentController {
     public ResponseEntity<?> createComment(@RequestBody CreateCommentDto commentDto) throws URISyntaxException {
         logger.info("IssueId : "+commentDto.getIssueId());
         URI location = new URI("/comment/create/"+commentDto.getIssueId());
-        commentService.createComment( new Comment(commentDto.getIssueId(),commentDto.getContext(), commentDto.getCommentUserId()));
+        commentService.createComment( commentDto);
         return ResponseEntity.created(location).body("");
     }
 
     @PatchMapping("/comment/adopt/{id}")
     public ResponseEntity<?> adoptComment(@PathVariable Long id, @RequestBody boolean status) throws URISyntaxException {
         URI location = new URI("/comment/adopt/"+id);
-//        Issue issue = issueService.getIssueById(id).orElseGet(null);
         commentService.updateCommentState(id);
         return ResponseEntity.created(location).body("Adopt Answer");
     }

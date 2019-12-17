@@ -1,6 +1,7 @@
 package com.num6pj.watchout.comment.application;
 
 import com.num6pj.watchout.comment.domain.Comment;
+import com.num6pj.watchout.comment.dto.CreateCommentDto;
 import com.num6pj.watchout.comment.infra.CommentRepository;
 import com.num6pj.watchout.issue.domain.Issue;
 import com.num6pj.watchout.issue.infra.IssueRepository;
@@ -19,19 +20,22 @@ public class CommentService {
 
 
 
-    public void createComment( Comment comment){
-        commentRepository.save( comment);
+    public void createComment( CreateCommentDto commentDto){
+        Issue issue = issueRepository.findById(commentDto.getIssueId()).orElse(null);
+        commentRepository.save( new Comment(issue,commentDto.getContext(), commentDto.getCommentUserId()));
     }
 
     public void updateCommentState( Issue issue ) {
         commentRepository.findById(issue.getIssueId()).get().setAdoptedStatus(true);
     }
-    public void updateCommentState(Long id){
-        Issue issue = issueRepository.findById(id).orElse(null);
+    public void updateCommentState(Long commentId){
+        /* TODO 연관관계 맵핑 후 재구성
+        *  */
+        Comment comment = commentRepository.findById(commentId).orElse(null);
         //comment adopted
-        commentRepository.findById(issue.getIssueId()).get().setAdoptedStatus(true);
+        comment.setAdoptedStatus(true);
         //issue adopted
-        issue.setCompleted(true);
+        comment.getIssue().setCompleted(true);
     }
 
 
