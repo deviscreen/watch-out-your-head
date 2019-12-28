@@ -33,3 +33,6 @@ out/
 
 ### NODE Package Manager
 !**/node_modules/**
+
+### nextjs
+.next
