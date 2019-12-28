@@ -8,6 +8,7 @@ import com.num6pj.watchout.issue.domain.Issue;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,6 @@ public class CommentController {
 
     Logger logger = LoggerFactory.getLogger(CommentController.class);
     CommentService commentService;
-    IssueService issueService;
 
     public CommentController( CommentService commentService){
         this.commentService = commentService;
@@ -39,7 +39,7 @@ public class CommentController {
     public ResponseEntity<?> adoptComment(@PathVariable Long id, @RequestBody boolean status) throws URISyntaxException {
         URI location = new URI("/comment/adopt/"+id);
         commentService.updateCommentState(id);
-        return ResponseEntity.created(location).body("Adopt Answer");
+        return ResponseEntity.created(location).body(HttpStatus.CREATED);
     }
 
 
