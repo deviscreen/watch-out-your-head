@@ -32,3 +32,7 @@ WEB server : watchout-web ( React - npm )
 2019-10-06 핵심 도메인 생성 및 h2 JPA 연결 
 ### WEB Server Development Note
 2019-09-28 watchout-web 서버 환경 구축
+
+### nextjs 기반 웹프로젝트 실행
+* npm install
+* npm run dev
